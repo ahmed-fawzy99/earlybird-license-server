@@ -30,6 +30,7 @@ async function sendWebhook() {
         const response = await axios.post(process.env.EARLYBIRD_WEBHOOK_ENDPOINT, null, {
             headers: {
                 'PARTNER_API_KEY': process.env.PARTNER_API_KEY,
+                'PARTNER_ULID': process.env.PARTNER_ULID,
                 'EARLYBIRD_API_KEY': generateKey(),
                 'Content-Type': 'application/json',
             }
