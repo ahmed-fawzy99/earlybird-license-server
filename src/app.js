@@ -97,6 +97,27 @@ app.get("/getLicense/:id/:planId/:qty", apiKeyMiddleware, async (req, res) => {
     // res.status(404).json({ error: "INTERNAL PARTNER ERROR" });
 });
 
+// Upgrade License Request
+app.post("/upgradeLicense/:licenseKey", apiKeyMiddleware, (req, res) => {
+    const { licenseKey } = req.params;
+
+    // Your logic here to upgrade the license
+
+    res.json({ status: "OK" });
+});
+
+
+// post webhook request to mark a license as refunded
+app.post("/refundLicense/:licenseKey", apiKeyMiddleware, (req, res) => {
+    const { licenseKey } = req.params;
+
+    // Your logic here to mark the license as refunded
+
+    res.json({ status: "OK" });
+});
+
+
+
 // Start server
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
