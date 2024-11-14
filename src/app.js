@@ -73,29 +73,44 @@ function sleep(ms) {
  * // Sample request usage
  * https://your-domain.com/getLicense/375/9427/2
  */
-app.get("/getLicense/:id/:planId/:qty", apiKeyMiddleware, async (req, res) => {
-    const { id, planId, qty } = req.params;
-    await sleep(5000); // Simulate a delay of 1 second
+// app.get("/getLicense/:id/:planId/:qty", apiKeyMiddleware, async (req, res) => {
+//     const { id, planId, qty } = req.params;
+//     await sleep(5000); // Simulate a delay of 1 second
 
 
-    // Get qty number of license keys, with random values
-    const licenses = Array.from({ length: qty }, (_, i) => ({
-        [`license-${i + 1}`]: generateLicense(12)
-    }));
+//     // Get qty number of license keys, with random values
+//     const licenses = Array.from({ length: qty }, (_, i) => ({
+//         [`license-${i + 1}`]: generateLicense(12)
+//     }));
 
-    // Format the response structure as requested
-    const response = {
-        [`product${id}`]: {
-            [`plan${planId}`]: Object.assign({}, ...licenses)
-        }
-    };
+//     // Format the response structure as requested
+//     const response = {
+//         [`product${id}`]: {
+//             [`plan${planId}`]: Object.assign({}, ...licenses)
+//         }
+//     };
 
-    res.json(response);
+//     res.json(response);
+
+
+//     // in case of error
+//     // res.status(404).json({ error: "INTERNAL PARTNER ERROR" });
+// });
+
+
+app.get("/getLicense/:id/:planId", apiKeyMiddleware, async (req, res) => {
+    const { id, planId } = req.params;
+    await sleep(2000);
+    
+
+    res.json({'license' : generateLicense(12)});
 
 
     // in case of error
     // res.status(404).json({ error: "INTERNAL PARTNER ERROR" });
 });
+
+
 
 // Upgrade License Request
 app.post("/upgradeLicense/:licenseKey", apiKeyMiddleware, (req, res) => {
