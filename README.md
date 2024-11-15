@@ -8,7 +8,7 @@ Instructions to run the app on a linux server.
 git clone https://github.com/ahmed-fawzy99/earlybird-license-server.git
 cd earlybird-license-server
 ```
-Go to `.env` and set your `PARTNER_API_KEY`.
+Go to `.env` and set your `PARTNER_ULID` and `PARTNER_API_KEY` (Find them in your Partner Tools on Earlybird).
 
 ### Docker
 - Run the following command to build the docker image:
