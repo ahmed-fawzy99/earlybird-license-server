@@ -131,6 +131,14 @@ app.post("/refundLicense/:licenseKey", apiKeyMiddleware, (req, res) => {
     res.json({ status: "OK" });
 });
 
+app.post("/redeemLicense/:licenseKey", apiKeyMiddleware, (req, res) => {
+    const { licenseKey } = req.params;
+
+    licenseKey + "Has Been Redeemed";
+
+    res.json({ status: "OK" });
+});
+
 
 
 // Start server
